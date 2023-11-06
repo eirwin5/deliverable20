@@ -17,4 +17,6 @@ window.addEventListener("load", function () {
 	console.log(video);
 	video.pause();
   });
+
+	// Slow the current video speed by 10% each time the button is clicked and log the new speed to the console.  
 });
