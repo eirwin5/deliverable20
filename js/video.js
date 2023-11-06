@@ -4,13 +4,13 @@ window.addEventListener("load", function () {
   console.log("Good job opening the window");
   video = document.querySelector("#player1");
   video.autoplay = false;
-  video.pause(); 
+  video.pause();
   video.loop = false;
 
   document.querySelector("#play").addEventListener("click", function () {
     console.log("Play Video");
     video.play();
-	updateVolume(); 
+    updateVolume();
   });
 
   document.querySelector("#pause").addEventListener("click", function () {
@@ -46,32 +46,32 @@ window.addEventListener("load", function () {
   // Mute/unmute the video and update the text in the button.
   this.document.querySelector("#mute").addEventListener("click", function () {
     console.log("Mute Video");
-	console.log(video.muted); 
-      video.muted = !video.muted; 
-	  document.querySelector("#mute").innerHTML = video.muted ? "Unmute" : "Mute"; 
+    console.log(video.muted);
+    video.muted = !video.muted;
+    document.querySelector("#mute").innerHTML = video.muted ? "Unmute" : "Mute";
   });
 
   // Change the volume based on the slider and update the volume information.
   this.document.querySelector("#slider").addEventListener("input", function () {
     console.log("Change volume");
-	console.log(video.volume); 
-	video.volume = this.value / 100; 
-	document.querySelector("#volume").innerHTML = this.value + '%'; 
+    updateVolume();
   });
 
   // Styled: Utilize the existing oldSchool class on the video element
-  this.document.querySelector("#vintage").addEventListener("click", function () { 
-	video.classList.add("oldSchool"); 
-  })
+  this.document
+    .querySelector("#vintage")
+    .addEventListener("click", function () {
+      video.classList.add("oldSchool");
+    });
 
   // Original: Remove the oldSchool class from the video.
-  this.document.querySelector("#orig").addEventListener("click", function () { 
-	video.classList.remove("oldSchool"); 
-  })
+  this.document.querySelector("#orig").addEventListener("click", function () {
+    video.classList.remove("oldSchool");
+  });
 });
 
-function updateVolume() { 
-	console.log(video.volume); 
-	video.volume = document.querySelector("#slider").value / 100; 
-	document.querySelector("#volume").innerHTML = video.volume * 100 + '%'; 
+function updateVolume() {
+  console.log(video.volume);
+  video.volume = document.querySelector("#slider").value / 100;
+  document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 }
