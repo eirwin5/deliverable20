@@ -10,6 +10,7 @@ window.addEventListener("load", function () {
   document.querySelector("#play").addEventListener("click", function () {
     console.log("Play Video");
     video.play();
+	updateVolume(); 
   });
 
   document.querySelector("#pause").addEventListener("click", function () {
@@ -47,6 +48,7 @@ window.addEventListener("load", function () {
     console.log("Mute Video");
 	console.log(video.muted); 
       video.muted = !video.muted; 
+	  document.querySelector("#mute").innerHTML = video.muted ? "Unmute" : "Mute"; 
   });
 
   // Change the volume based on the slider and update the volume information.
@@ -54,16 +56,22 @@ window.addEventListener("load", function () {
     console.log("Change volume");
 	console.log(video.volume); 
 	video.volume = this.value / 100; 
-	document.querySelector("#volume").innerHTML = this.value + ' %'; 
+	document.querySelector("#volume").innerHTML = this.value + '%'; 
   });
 
   // Styled: Utilize the existing oldSchool class on the video element
   this.document.querySelector("#vintage").addEventListener("click", function () { 
 	video.classList.add("oldSchool"); 
   })
-  
+
   // Original: Remove the oldSchool class from the video.
   this.document.querySelector("#orig").addEventListener("click", function () { 
 	video.classList.remove("oldSchool"); 
   })
 });
+
+function updateVolume() { 
+	console.log(video.volume); 
+	video.volume = document.querySelector("#slider").value / 100; 
+	document.querySelector("#volume").innerHTML = video.volume * 100 + '%'; 
+}
